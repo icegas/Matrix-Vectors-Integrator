@@ -37,31 +37,31 @@ namespace TrueMatrix_Integrator
 
         public void Set(Matrix K0)
         {
-            A.SetElement(1, 0, 1);
+            A[1, 0] = 1;
 
-            A.SetElement(0, 1, -1 / (Tf * Tf));
-            A.SetElement(1, 1, -2 * Xif / Tf);
+            A[0, 1] = -1 / (Tf * Tf);
+            A[1, 1] = -2 * Xif / Tf;
 
-            A.SetElement(5, 2, -K3 / T3);
-            A.SetElement(1, 2, K3 / T3);
-            A.SetElement(2, 2, -1 / T3);
+            A[5, 2] = -K3 / T3);
+            A[1, 2] = K3 / T3);
+            A[2, 2] = -1 / T3);
             
 
-            A.SetElement(4, 3, 1);
+            A[4, 3] = 1;
 
-            if (K0.GetElement(4, 4)!=0)
-            A.SetElement(2, 4, K4 / (T4 * T4));
+            if (K0[4, 4] !=0)
+            A[2, 4] = K4 / (T4 * T4);
             else
-            A.SetElement(2, 4,  K4 / (T4 * T4));
-            A.SetElement(3, 4, -1 / (T4 * T4));
-            A.SetElement(4, 4, -2 * Xi4 / T4);
+            A[2, 4] =  K4 / (T4 * T4);
+            A[3, 4] = -1 / (T4 * T4);
+            A[4, 4] = -2 * Xi4 / T4;
 
-            A.SetElement(4, 5, K6 / T6);
-            A.SetElement(5, 5, -1 / T6);
+            A[4, 5] = K6 / T6;
+            A[5, 5] = -1 / T6;
 
             
 
-            B.SetElement(0, 1, Kf / (Tf * Tf));
+            B[0, 1] = Kf / (Tf * Tf);
 
             
 
@@ -69,13 +69,10 @@ namespace TrueMatrix_Integrator
 
         public void SetK(ref Matrix K)
         {
-            K.SetElement(0, 0, 1);
-            K.SetElement(1, 1, 1);
-            K.SetElement(2, 2, 1);
-            K.SetElement(3, 3, 1);
-            K.SetElement(4, 4, 1);
-            K.SetElement(5, 5, 1);
-           
+        	for(int i = 0; i < K.RowsCount; i++)
+		     for(int j = 0; j < K.ColumnsCount; j++)
+		     	if(i == j)
+		   		K[i, j] = 1;		
         }
 
         public override void Func(Matrix K,ref Matrix dK, double x)
