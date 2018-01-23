@@ -42,9 +42,9 @@ namespace TrueMatrix_Integrator
             A[0, 1] = -1 / (Tf * Tf);
             A[1, 1] = -2 * Xif / Tf;
 
-            A[5, 2] = -K3 / T3);
-            A[1, 2] = K3 / T3);
-            A[2, 2] = -1 / T3);
+            A[5, 2] = -K3 / T3;
+            A[1, 2] = K3 / T3;
+            A[2, 2] = -1 / T3;
             
 
             A[4, 3] = 1;
